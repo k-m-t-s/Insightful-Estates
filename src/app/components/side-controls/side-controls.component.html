@@ -1,0 +1,45 @@
+
+<mat-drawer-container 
+[autosize]="true" 
+class="min-h-[95%] mx-auto ">
+    <mat-drawer mode="side" opened class="w-[20%]">
+        <mat-list>
+            <mat-list-item >Region</mat-list-item>
+            <mat-chip-listbox aria-label="Select United States Region" class="px-3" multiple="true">
+                <mat-chip-option selected>North East</mat-chip-option>
+                <mat-chip-option >South</mat-chip-option>
+                <mat-chip-option color="accent">North West</mat-chip-option>
+                <mat-chip-option color="warn">Mid West</mat-chip-option>
+                <mat-chip-option color="warn">South West</mat-chip-option>
+            </mat-chip-listbox>
+            <mat-list-item>Time</mat-list-item>
+            <mat-list-item>
+                <mat-slider min="200" max="400">
+                    <input value="300" matSliderStartThumb>
+                    <input value="400" matSliderEndThumb>
+                </mat-slider>
+            </mat-list-item>
+            <mat-list-item>
+                <mat-slider class="w-1" min="200" max="400" >
+                    <input value="300" matSliderStartThumb>
+                    <input value="400" matSliderEndThumb>
+                </mat-slider>
+            </mat-list-item>
+            <mat-list-item>Number of Bedrooms</mat-list-item>
+
+            <mat-list-item>Type</mat-list-item>
+                <mat-chip-listbox aria-label="Select housing type" class="px-3" multiple="true">
+                    <mat-chip-option selected>Single Family</mat-chip-option>
+                    <mat-chip-option color="accent">Condo</mat-chip-option>
+                    <mat-chip-option color="warn">Mid West</mat-chip-option>
+                    <mat-chip-option color="warn">South West</mat-chip-option>
+                </mat-chip-listbox>
+
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        hi
+        <figure id="bar"></figure>
+    </mat-drawer-content>
+</mat-drawer-container>
+
