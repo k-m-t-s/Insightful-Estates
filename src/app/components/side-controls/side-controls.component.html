@@ -2,7 +2,7 @@
 <mat-drawer-container 
 [autosize]="true" 
 class="min-h-[95%] mx-auto ">
-    <mat-drawer mode="side" opened class="w-[20%]">
+    <mat-drawer mode="side" opened class="w-[18rem]">
         <mat-list>
             <mat-list-item >Region</mat-list-item>
             <mat-chip-listbox aria-label="Select United States Region" class="px-3" multiple="true">
@@ -13,14 +13,14 @@ class="min-h-[95%] mx-auto ">
                 <mat-chip-option color="warn">South West</mat-chip-option>
             </mat-chip-listbox>
             <mat-list-item>Time</mat-list-item>
-            <mat-list-item>
+            <mat-list-item class="ml-2">
                 <mat-slider min="200" max="400">
                     <input value="300" matSliderStartThumb>
                     <input value="400" matSliderEndThumb>
                 </mat-slider>
             </mat-list-item>
-            <mat-list-item>
-                <mat-slider class="w-1" min="200" max="400" >
+            <mat-list-item class="ml-2">
+                <mat-slider min="200" max="400" >
                     <input value="300" matSliderStartThumb>
                     <input value="400" matSliderEndThumb>
                 </mat-slider>
@@ -34,12 +34,11 @@ class="min-h-[95%] mx-auto ">
                     <mat-chip-option color="warn">Mid West</mat-chip-option>
                     <mat-chip-option color="warn">South West</mat-chip-option>
                 </mat-chip-listbox>
-
         </mat-list>
     </mat-drawer>
     <mat-drawer-content>
-        hi
-        <figure id="bar"></figure>
+        <figure id="bar" class="justify-center flex"></figure>
+        <p>{{ newdata }}</p>apples
     </mat-drawer-content>
 </mat-drawer-container>
 
