@@ -13,15 +13,16 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HeaderComponent } from './components/header/header.component';
 import { SideControlsComponent } from './components/side-controls/side-controls.component';
-import { GraphAreaComponent } from './components/graph-area/graph-area.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SideControlsComponent,
-    GraphAreaComponent
+    SideControlsComponent  
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,9 @@ import { GraphAreaComponent } from './components/graph-area/graph-area.component
     MatSidenavModule,
     MatSlideToggleModule,
     MatSliderModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule,
+    MatSelectModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

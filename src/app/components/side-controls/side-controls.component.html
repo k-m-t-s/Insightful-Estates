@@ -4,14 +4,14 @@
 class="min-h-[95%] mx-auto ">
     <mat-drawer mode="side" opened class="w-[18rem]">
         <mat-list>
-            <mat-list-item >Region</mat-list-item>
-            <mat-chip-listbox aria-label="Select United States Region" class="px-3" multiple="true">
-                <mat-chip-option selected>North East</mat-chip-option>
-                <mat-chip-option >South</mat-chip-option>
-                <mat-chip-option color="accent">North West</mat-chip-option>
-                <mat-chip-option color="warn">Mid West</mat-chip-option>
-                <mat-chip-option color="warn">South West</mat-chip-option>
-            </mat-chip-listbox>
+            <mat-list-item >State</mat-list-item>
+            <mat-form-field appearance="fill" class="m-4">
+                <mat-select [(value)]="selectedFood">
+                    <mat-option [value]="option.value" *ngFor="let option of foods">
+                        {{ option.viewValue }}
+                    </mat-option>
+                </mat-select>
+                </mat-form-field>
             <mat-list-item>Time</mat-list-item>
             <mat-list-item class="ml-2">
                 <mat-slider min="200" max="400">
@@ -37,8 +37,8 @@ class="min-h-[95%] mx-auto ">
         </mat-list>
     </mat-drawer>
     <mat-drawer-content>
-        <figure id="bar" class="justify-center flex"></figure>
-        <p>{{ newdata }}</p>apples
+        <h2>Scatter Plot</h2>
+        <figure id="my_dataviz"></figure>
     </mat-drawer-content>
 </mat-drawer-container>
 

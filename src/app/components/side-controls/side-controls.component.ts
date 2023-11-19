@@ -1,69 +1,86 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ApiserviceService } from "../../service"
 import * as d3 from 'd3';
+
+interface Food {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-side-controls',
   templateUrl: './side-controls.component.html',
   styleUrls: ['./side-controls.component.css']
 })
-export class SideControlsComponent implements OnInit{
+
+export class SideControlsComponent implements OnInit {
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];
+  selectedFood = this.foods[2].value;
+
+  private svg:any;
+  private marginTop = 10;
+  private marginBottom = 30;
+  private marginLeft = 60;
+  private marginRight = 30;
+  private width = 1000;
+  private height = 600;
+  private data : any;
+  private x : any;
+  private y : any;
+
   ngOnInit(): void {
-    this.createSvg();
-    this.drawBars(this.data);
+    this.getData()
+  }
 
-}
-private data = [
-  {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
-  {"Framework": "React", "Stars": "150793", "Released": "2013"},
-  {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
-  {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
-  {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
-];
-private svg: any;
-private margin = 50;
-private width = 750 - (this.margin * 2);
-private height = 400 - (this.margin * 2);
-private createSvg(): void {
-  this.svg = d3.select("figure#bar")
-  .append("svg")
-  .attr("width", this.width + (this.margin * 2))
-  .attr("height", this.height + (this.margin * 2))
-  .append("g")
-  .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
-}
-private drawBars(data: any[]): void {
-  // Create the X-axis band scale
-  const x = d3.scaleBand()
-  .range([0, this.width])
-  .domain(data.map(d => d.Framework))
-  .padding(0.2);
+  constructor(private apiservice:ApiserviceService) { }
 
-  // Draw the X-axis on the DOM
-  this.svg.append("g")
-  .attr("transform", "translate(0," + this.height + ")")
-  .call(d3.axisBottom(x))
-  .selectAll("text")
-  .attr("transform", "translate(-10,0)rotate(-45)")
-  .style("text-anchor", "end");
+  private getData() {
+    this.apiservice.getConfig().subscribe(response => {
+      this.data = response; 
+      this.convertToDate()
+      this.drawScatter()
+    });
+  }
+  private convertToDate(){
+    for(let index=0; index < this.data.length; index++){
+        this.data[index]["variable"] = new Date(this.data[index]["variable"])
+    }
+    console.log(this.data)
+  }
+  private drawScatter() {
+    this.svg = d3.select("#my_dataviz")
+    .append("svg")
+      .attr("width", this.width + this.marginLeft + this.marginRight)
+      .attr("height", this.height + this.marginTop + this.marginBottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + this.marginLeft + "," + this.marginTop + ")");
+  
+    this.x = d3.scaleTime()
+    .domain([new Date("2000-01-31"), new Date("2023-09-30")])
+    .range([ 0, this.width ]);
+    this.svg.append("g")
+    .attr("transform", "translate(0," + this.height + ")")
+    .call(d3.axisBottom(this.x));
 
-  // Create the Y-axis band scale
-  const y = d3.scaleLinear()
-  .domain([0, 200000])
-  .range([this.height, 0]);
+    this.y = d3.scaleLinear()
+    .domain([0, 1500000])
+    .range([ this.height, 0]);
+    this.svg.append("g")
+    .call(d3.axisLeft(this.y));
 
-  // Draw the Y-axis on the DOM
-  this.svg.append("g")
-  .call(d3.axisLeft(y));
+    this.svg.append('g')
+      .selectAll("dot")
+      .data(this.data)
+      .enter().append("circle")
+        .attr("cx", (d: any) => this.x(d.variable))
+        .attr("cy",  (d: any) => this.y(d.value))
+        .attr("r", 1.5)
+        .style("fill", "#69b3a2");
 
-  // Create and fill the bars
-  this.svg.selectAll("bars")
-  .data(data)
-  .enter()
-  .append("rect")
-  .attr("x", (d: any) => x(d.Framework))
-  .attr("y", (d: any) => y(d.Stars))
-  .attr("width", x.bandwidth())
-  .attr("height", (d: any) => this.height - y(d.Stars))
-  .attr("fill", "#d04a35");
-}
+  }
 }
