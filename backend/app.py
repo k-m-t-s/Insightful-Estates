@@ -9,9 +9,9 @@ api = Api(app)
 CORS(app)
 
 
-def getData(type):
-    db = pd.read_csv(type)
-    db = db.loc[db['StateName']=="WA"]
+def getData(file,type):
+    db = pd.read_csv(file)
+    db = db.loc[db['StateName']==type]
     db = db.iloc[::5, :]
     db = db.drop(columns=["SizeRank","RegionID","RegionName","RegionType", "StateName"])
     db = pd.melt(db)
@@ -48,26 +48,18 @@ def clearWorkingSet():
 
 class state(Resource):
     def get(self,state):
-        # return {"sat":state}
-        return addToDataSet() 
-class singleFamily(Resource):
-    def get(self):
-        return getData("data\SFH_TimeSeries.csv")
-class Condo(Resource):
-    def get(self):
-        return getData("data\condo_tier_TimeSeries.csv")
-class time(Resource):
-    def get(self, time):
-        pass
-
-class region(Resource):
-    def get(self, region):
-        pass
-
+        return getData("data\SFH_TimeSeries.csv", state)
+class type(Resource):
+    def get(self,state, type):
+        print(type)
+        if type == 1:
+            return getData("data\SFH_TimeSeries.csv", state)
+        else:
+            return getData("data\condo_tier_TimeSeries.csv", state)
 
 api.add_resource(state, "/state/<string:state>")
-api.add_resource(singleFamily, "/singleFamily")
-api.add_resource(Condo, "/Condo")
+api.add_resource(type, "/state/<string:state>/<string:type>")
+
 
 
 

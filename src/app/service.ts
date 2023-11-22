@@ -8,8 +8,10 @@ import { Observable } from "rxjs";
 export class ApiserviceService {
     constructor(private http: HttpClient) { }
     newdata:any;
-    getConfig(): Observable<any> {
-        return this.http.get('http://127.0.0.1:5000/singleFamily');
+    getConfig(state: String): Observable<any> {
+        return this.http.get('http://127.0.0.1:5000/state/'+state);
     }
-
+    getType(state: String, type: number): Observable<any> {
+        return this.http.get('http://127.0.0.1:5000/state/'+state+"/"+type);
+    }
 }
