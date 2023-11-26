@@ -15,7 +15,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { SideControlsComponent } from './components/side-controls/side-controls.component';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -36,7 +36,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatSliderModule,
     MatToolbarModule,
     HttpClientModule,
-    MatSelectModule 
+    MatSelectModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

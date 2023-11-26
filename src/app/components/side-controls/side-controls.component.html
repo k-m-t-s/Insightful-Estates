@@ -1,4 +1,4 @@
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <mat-drawer-container 
 [autosize]="true" 
 class="min-h-[95%] mx-auto ">
@@ -27,18 +27,25 @@ class="min-h-[95%] mx-auto ">
                 </mat-slider>
             </mat-list-item>
             <mat-list-item>Number of Bedrooms</mat-list-item>
-
             <mat-list-item>Type</mat-list-item>
-                <mat-chip-listbox aria-label="Select housing type" class="px-3" >
-                    <mat-chip-option selected (click)="typeChange1()">Single Family</mat-chip-option>
-                    <mat-chip-option color="accent"(click)="typeChange2()">Condo</mat-chip-option>
-
-                </mat-chip-listbox>
+            <mat-chip-listbox aria-label="Select housing type" class="px-3" >
+                <mat-chip-option selected (click)="typeChange1()">Single Family</mat-chip-option>
+                <mat-chip-option color="accent"(click)="typeChange2()">Condo</mat-chip-option>
+            </mat-chip-listbox>
+            <mat-list-item class="mt-7">
+                <mat-slide-toggle #slide (change)="togglePredict($event)">Predict Future Value</mat-slide-toggle>
+            </mat-list-item>
         </mat-list>
     </mat-drawer>
-    <mat-drawer-content class="p-5 m-10 pl-10">
-        <h2>         Housing Data</h2>
-        <figure class="p-5 m-10" id="my_dataviz"></figure>
+    <mat-drawer-content class="p-3">
+        <h2>Housing Data</h2>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12" id="scatterPlot"></div>
+                <!-- <div class="col-xl-6"></div> -->
+            </div>
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
