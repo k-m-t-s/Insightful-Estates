@@ -1,27 +1,36 @@
-# MyApp
+# House Value Website
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.9.
+## Overview
 
-## Development server
+Welcome to the House Value Website! This web application utilizes data from Zillow to graphically represent house values over time using D3.js. Users can explore the historical trends of home values in specific locations, helping them make informed decisions about rental properties.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+### Completed
+- Graphical Representation
+- Location-based Search
+- Predicting the future
+- Filter using Single Family Housing vs Condos
+### Upcoming 
+- repsonsive content
+- filtering data using time
+- filtering houses using number of bedroom
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## How was it build and tools used?
+### Backend
+The backend is an API built using a flask server. Data is sourced from Zillow Housing Data and saved locally as CSV.
+Pandas was used to filter and transform the raw data to a manageable form.
+
+### Frontend
+The frontend is built using Angular and Tailwind CSS. 
 
 ## Build
+To run the website locally, 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. git clone https://github.com/k-m-t-s/my-app
+2. cd to my-app/backend and run `python app.py` to run the backend API.
+3. Run `ng serve` to build the project.
+4. Navigate to `http://localhost:4200/` to see the website.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Screenshots
+![image](https://github.com/k-m-t-s/my-app/assets/79454039/553c3d6e-8d71-4a0b-a613-838ee78475a1)
