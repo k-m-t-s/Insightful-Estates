@@ -9,12 +9,12 @@ Welcome to the House Value Website! This web application utilizes data from Zill
 ### Completed
 - Graphical Representation
 - Location-based Search
-- Predicting the future
-- Filter using Single Family Housing vs Condos
+- Predicting the future using Facebook's Prophet
+- Filtering using Single Family Housing vs Condos
 ### Upcoming 
-- repsonsive content
-- filtering data using time
-- filtering houses using number of bedroom
+- Repsonsive content
+- Filtering data using time
+- Filtering houses using number of bedroom
 
 ## How was it build and tools used?
 ### Backend
@@ -34,3 +34,7 @@ To run the website locally,
 
 ## Screenshots
 ![image](https://github.com/k-m-t-s/my-app/assets/79454039/553c3d6e-8d71-4a0b-a613-838ee78475a1)
+
+## Contact
+
+For any questions or comments, please contact me at kaleb.m.tefera@gmail.com
