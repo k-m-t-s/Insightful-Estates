@@ -1,8 +1,8 @@
-# House Value Website
+# InsightfulEstates
 
 ## Overview
 
-Welcome to the House Value Website! This web application utilizes data from Zillow to graphically represent house values over time using D3.js. Users can explore the historical trends of home values in specific locations, helping them make informed decisions about rental properties.
+Welcome to InsightfulEstates! This web application utilizes data from Zillow to graphically represent house values over time using D3.js. Users can explore the historical trends of home values in specific locations, helping them make informed decisions about rental properties.
 
 ## Features
 
